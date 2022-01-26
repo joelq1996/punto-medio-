@@ -1,0 +1,15 @@
+f=@(y) (1/2)*(1-y);%ecuacion diferencial
+p=@(x)1-exp(-x/2);%solucion analitica
+a=0;%intervalos
+b=5;
+y0=0;%condicion inicial
+n=10;%numero de divisiones
+t=a:0.01:b;%vector de puntos para graficar
+k=p_medio(f,a,b,y0,n);
+%fprintf('%f',k);
+plot(k(:,1),k(:,2));
+xlabel('x');
+ylabel('y');
+hold on
+plot(t,p(t),'k--','lineWidth',1);
+legend('P Medio','Sol.Analitica');
