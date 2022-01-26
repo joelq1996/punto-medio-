@@ -1,0 +1,26 @@
+function m= p_medio(f,a,b,y0,n)
+%{
+Joeel Quintuna 
+f:funcion que representa la ecuacion diferencial
+a,b intervalos donde se evalua la ecuacion diferencial
+a,b: limites del intervalo.
+m: matriz de valores que representa la aproximacion a la respuesta de la
+ecuacion diferencial
+%}
+h=(b-a)/n;%paso 
+t=a;
+w=y0;
+
+ya(1,1)=t;
+ya(1,2)=w;%matriz para guardar los resultados
+
+for i=1:n
+    dy=h*f(w);%dy de euler
+    ym=h*f(w+dy/2);%ym 
+    w=w+ym;
+    t=a+i*h;%nuevo valor de t
+    ya(i+1,1)=t;%se asigna en la posicion i el resultado obtenido de la matriz ya
+    ya(i+1,2)=w;
+end
+m=ya;
+end
